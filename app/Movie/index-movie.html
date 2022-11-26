@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <nav class= "navbar navbar-default" role= "navigation" >
+            <button ng-click="movies.retrieve();" 
+            class="btn btn-primary pull-right"><i class="glyphicon glyphicon-cloud-download"></i>&nbsp;Update Movie List</button>
+        </nav>
+        <div class="col-md-12" ng-show="movies.movieCollection.length > 0">
+            <!--input ng-model="search" id="search"/-->
+            <div class="col-md-12">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="search">Search by title</label>
+                        <input type="text" class="form-control" id="search" ng-model="movies.search.criteria">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Date range</label>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" ng-model="movies.search.from">
+                            </div>            
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" ng-model="movies.search.to">    
+                            </div>            
+                        </div>            
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Sort by</label>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <select class="form-control" ng-model="movies.search.orderBy">
+                                    <option value="Title">Title</option>
+                                    <option value="Year">Date</option>
+                                </select>
+                            </div>            
+                            <div class="form-group col-md-6">
+                                <select class="form-control" ng-model="movies.search.order">
+                                    <option selected>Ascending</option>
+                                    <option>Descending</option>
+                                </select>
+                            </div>            
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <button ng-click="movies.filter();" 
+                        class="btn btn-primary"><i class="glyphicon glyphicon-search"></i>&nbsp;Submit</button>    
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12">
+                        {{movies.TotalRows}}   
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-bordered" id="datagrid" ng-show="movies.movieCollection.length > 0">
+                            <thead>
+                            <th>Title&nbsp;</th>
+                            <th>year&nbsp;</th>
+                            <th>Type&nbsp;</th>
+                            <th>Poster&nbsp;</th>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in movies.movieCollection| filter:search">
+                                    <td>{{data.Title}}</td>
+                                    <td>{{data.Year}}</td>
+                                    <td>{{data.Type}}</td>
+                                    <td><img src="{{data.Poster}}" width="150px"></td>
+                                </tr>
+                            </tbody>
+                        </table>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+            <h4>{{movies.movieCollection.length}} Movies Found</h4>
+    </div>
+</div>
