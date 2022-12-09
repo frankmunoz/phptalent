@@ -13,11 +13,17 @@
                     controller: 'AuthenticationCtrl',
                     controllerAs: 'authentication'
                 })
-               .when('/movies', {
+                .when('/movies', {
                     title: 'Movies',
                     templateUrl: 'app/Movie/index-movie.html',
                     controller: 'MovieCtrl',
                     controllerAs: 'movies'
+                })
+                .when('/logout', {
+                    title: 'Autenticación',
+                    templateUrl: 'app/Authentication/index-authentication.html',
+                    controller: 'AuthenticationCtrl',
+                    controllerAs: 'authentication'
                 })
                 .otherwise({
                     redirectTo: '/'

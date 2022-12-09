@@ -25,7 +25,7 @@ class NoSQL {
      * This method is used to truncate and populate data into Json File
      *
      * @param object $data
-     * @return object with structure to show if the transaction was successful or not
+     * @return integer number of register
      */
     public function truncateAndPopulate($data){
         try {
@@ -91,8 +91,8 @@ class NoSQL {
      *
      * This method is used to get the data from URI
      *
-     * @param object $data
-     * @return object with structure to show if the transaction was successful or not
+     * @param object $endPoint
+     * @return object json content file
      */
     public function getJSONFromURI($endPoint){
         try {
@@ -109,7 +109,7 @@ class NoSQL {
      * This method is used to decode  Json data
      *
      * @param object $data
-     * @return object with structure to show if the transaction was successful or not
+     * @return object json decoded
      */
     public function json($data) {
         return json_decode($data);

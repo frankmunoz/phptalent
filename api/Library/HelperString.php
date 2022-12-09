@@ -1,5 +1,22 @@
 <?php
+/**
+ * Manages all operations with strings and arrays
+ *
+ * This class is used to manage all operations with strings and arrays
+ *
+ * @version 1.0
+ * @author Francisco Muñoz
+ */
 class HelperString {
+
+    /**
+     * Find the position of character in string 
+     *
+     * This method is used to find the position of character in string 
+     *
+     * @param string $haystack, $needle, $offset = 0
+     * @return integer $start with the position of charactere in the string 
+     */
     public static function strPosition($haystack, $needle, $offset = 0)
     {
         $count = HelperString::strLength($needle);
@@ -35,6 +52,14 @@ class HelperString {
         return $start;
     }
 
+    /**
+     * Length of string
+     *
+     * This method is used to Length of string
+     *
+     * @param string $string
+     * @return integer $i with the length of string 
+     */
     public static function strLength($string)
     {
         $i = 0;
@@ -49,6 +74,14 @@ class HelperString {
         return $i;
     }
 
+    /**
+     * Sort of Array
+     *
+     * This method is used to sort array by cols
+     *
+     * @param object $obj, $cols
+     * @return object $array ordered
+     */
     public static function array_msort($obj, $cols)
     {
         $colarr = array();

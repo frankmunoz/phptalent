@@ -50,6 +50,14 @@
                     .catch(onFrmFailed);
         }
 
+        function __logout(){
+            return AuthenticationService.logout()
+                    .then(function (data) {
+                        console.log(data);
+                    })
+                    .catch(onFrmFailed);
+        }
+
         function onLoginComplete(data, field){
             if (!data.success) {
                 console.log("NO SUCCESS");

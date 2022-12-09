@@ -70,6 +70,11 @@ class AuthenticationController extends Rest {
      */
     public function logout() {
         session_destroy();
+        return $this->response(['error' => FALSE
+                , 'sessionInactive' => TRUE
+                , 'message' => 'Session finished'
+                , 'totalRows' => 0
+            ], self::NO_CONTENT);
     }
 
     private function validateLoginForm($login){

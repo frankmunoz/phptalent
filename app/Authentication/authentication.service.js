@@ -23,7 +23,8 @@
         var service = {
             get: __get,
             post: __post,
-            login: __login
+            login: __login,
+            logout: __logout
         };
 
         return service;
@@ -46,6 +47,12 @@
 
         function __login(login) {
             return $http.post(urlService + 'authentication/login/', login)
+                    .then(getComplete)
+                    .catch(getFailed);
+        }
+
+        function __logout() {
+            return $http.post(urlService + 'authentication/logout/', {})
                     .then(getComplete)
                     .catch(getFailed);
         }
