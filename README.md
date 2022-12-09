@@ -18,6 +18,7 @@ The frontend use AngularJS
 
 This project uses a number of open source projects to work properly:
 
+- [PHP] - The easy and power language to modern web apps
 - [AngularJS] - HTML enhanced for web apps!
 - [markdown-it] - Markdown parser done right. Fast and easy to extend.
 - [Twitter Bootstrap] - great UI boilerplate for modern web apps
@@ -44,6 +45,7 @@ MIT
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
+   [php]: <https://www.php.net>
    [markdown-it]: <https://github.com/markdown-it/markdown-it>
    [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
    [AngularJS]: <http://angularjs.org>
