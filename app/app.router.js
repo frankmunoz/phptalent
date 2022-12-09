@@ -1,5 +1,10 @@
 "use strict";
-
+/**
+ * app Router
+ * This class manages all the paths to the frontend
+ * @namespace app.router
+ * @memberOf router
+ */
 (function () {
     angular
             .module('app')

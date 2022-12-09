@@ -29,10 +29,26 @@
         function activate() {
         }
 
+        /**
+         * Register an user
+         *
+         * This method is used to register an useer
+         *
+         * @param 
+         * @return object with structure to show if the transaction was successful or not
+         */
         function __register() {
             return __post();
         }
 
+        /**
+         * Post
+         *
+         * This method is used to register an user 
+         *
+         * @param object vm.data
+         * @return object with structure to show if the transaction was successful or not
+         */
         function __post() {
             return AuthenticationService.post({register: vm.data})
                     .then(function (data) {
@@ -42,6 +58,14 @@
 
         }
 
+        /**
+         * Login
+         *
+         * This method is used to send the data of login form
+         *
+         * @param object vm.dataLogin
+         * @return object with structure to show if the transaction was successful or not
+         */
         function __login(){
             return AuthenticationService.login({login: vm.dataLogin})
                     .then(function (data) {
@@ -50,6 +74,14 @@
                     .catch(onFrmFailed);
         }
 
+        /**
+         * Logout
+         *
+         * This method is used to close the system session
+         *
+         * @param 
+         * @return
+         */
         function __logout(){
             return AuthenticationService.logout()
                     .then(function (data) {
@@ -58,6 +90,14 @@
                     .catch(onFrmFailed);
         }
 
+        /**
+         * OnloginComplete
+         *
+         * This method is used to get the result of the login process and redirect
+         *
+         * @param object data, field
+         * @return object with structure to show if the transaction was successful or not
+         */
         function onLoginComplete(data, field){
             if (!data.success) {
                 console.log("NO SUCCESS");
@@ -81,6 +121,14 @@
             vm.message = data.message;
         }
 
+        /**
+         * OnFrmComplete
+         *
+         * This method is used to call validations for each field and show the possibles errors in the form
+         *
+         * @param object data, field
+         * @return object with structure to show if the transaction was successful or not
+         */
         function onFrmComplete(data, field) {
             if (!data.success) {
                 console.log("NO SUCCESS");
@@ -124,16 +172,40 @@
             vm.message = data.message;
         }
 
+        /**
+         * OnFrmFailed
+         *
+         * This method is used to show the error in case that the request failed 
+         *
+         * @param object error
+         * @return 
+         */
         function onFrmFailed(error) {
             console.log("ERROR");
         }    
         
+        /**
+         * GetElementForm
+         *
+         * This method is used to get the HTML element of the front page
+         *
+         * @param string field
+         * @return object HTML DOM element
+         */
         function getElementForm(field){
             let inputElement = capitalizeString(field);
             let el = document.getElementById('register' + inputElement);
             return el;
         }
 
+        /**
+         * capitalizeString
+         *
+         * This method is used to capitalize a string 
+         *
+         * @param string str
+         * @return string string capitalized
+         */
         function capitalizeString(str){
             if(str.length > 0){
                 return str.charAt(0).toUpperCase() + str.slice(1)
