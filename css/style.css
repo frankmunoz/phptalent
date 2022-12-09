@@ -2,6 +2,13 @@
     box-sizing: border-box;
 }
 
+.error{
+    background-color: ivory;
+    border: none;
+    outline: 2px solid red;
+    border-radius: 5px;
+}
+
 #search {
     background-image: url('../img/searchicon.png');
     background-position: 10px 10px;

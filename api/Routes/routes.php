@@ -11,6 +11,9 @@
  * @return endpoint
  */
 
+$route['api/authentication/login']['post'] = 'Controller/Authentication/AuthenticationController/login';
+$route['api/authentication/logout']['post'] = 'Controller/Authentication/AuthenticationController/logout';
+$route['api/authentication/register']['post'] = 'Controller/Authentication/AuthenticationController/post';
 $route['api/movies']['get'] = 'Controller/Movie/MovieController/get';
 $route['api/movies/retrieve']['get'] = 'Controller/Movie/MovieController/getCollection';
 $route['api/movies/filter']['post'] = 'Controller/Movie/MovieController/filter';

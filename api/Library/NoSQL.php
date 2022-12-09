@@ -3,6 +3,7 @@
 class NoSQL {
     public $table = NULL;
     public $entity = '';
+    public $pk = '';
     private $file = '';
     public $dbFolder = 'Database';
 
@@ -20,6 +21,26 @@ class NoSQL {
             }
             fclose($this->table);
             return $i;
+        } catch (Exception $exc) {  
+            return false;
+        }
+    }
+
+    public function insert($data){
+        try {
+            $json = $this->getJSONFromTable();
+            $records = json_decode(json_encode($json), TRUE);
+            $pk = $this->pk;
+            foreach($records AS $record){
+                if($record[$this->pk] === $data->$pk){
+                    return ['error'=>TRUE, 'message'=>["username"=>[$this->pk . ' field is already exists']]];
+                }
+            }
+
+            $records[] = $data;
+            $totalRows = $this->truncateAndPopulate($records);
+            return ['error'=>FALSE, 'message'=>'Record saved succesfully'];
+            return [$this->entity=>$data, 'rows'=>$totalRows];
         } catch (Exception $exc) {  
             return false;
         }

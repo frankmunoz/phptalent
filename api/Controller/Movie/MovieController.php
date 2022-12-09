@@ -5,7 +5,14 @@ class MovieController extends Rest {
     private $movieService;
 
     public function __construct() {
-        $this->movieService = new MovieService();
+        session_start();
+ 
+        if(!isset($_SESSION['user'])){
+            header('Location: ./');
+            exit;
+        } else {
+            $this->movieService = new MovieService();
+        }
     }
 
     public function get() {
