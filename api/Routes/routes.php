@@ -5,10 +5,10 @@
  * This deefinition is used to retrieve the data according with the 
  * given endpoint with HTTP Verb. <b>Note:</b> it is not required that
  * the user be currently logged in.
- *
- * @access public
- * @param string $user Francisco Muñoz
- * @return endpoint
+ * 
+ * @version 1.0
+ * @author Francisco Muñoz
+ * 
  */
 
 $route['api/authentication/login']['post'] = 'Controller/Authentication/AuthenticationController/login';

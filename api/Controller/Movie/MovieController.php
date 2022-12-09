@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * Manages all events of Movie section of API endpoints
+ *
+ * This class is used to retrieve and send the data according with the 
+ * given endpoint with HTTP Verb.
+ *
+ * @version 1.0
+ * @author Francisco Muñoz
+ */
 class MovieController extends Rest {
 
     private $movieService;
@@ -15,6 +23,14 @@ class MovieController extends Rest {
         }
     }
 
+    /**
+     * Get all the movies from Json DB file
+     *
+     * This method is used to geet all the movies with method GET
+     *
+     * @param 
+     * @return object with structure to show if the transaction was successful or not
+     */
     public function get() {
         try {
             $data = $this->movieService->get();
@@ -26,6 +42,15 @@ class MovieController extends Rest {
             echo $exc->getTraceAsString();
         }
     }
+
+    /**
+     * filter the movies 
+     *
+     * This method is used to filter the movies according with the criterias
+     *
+     * @param object with the criterias params to filter
+     * @return object with structure to show if the transaction was successful or not
+     */
     public function filter() {
         try {
             $params = $this->getInputDataStream();
@@ -42,6 +67,14 @@ class MovieController extends Rest {
         }
     }
 
+    /**
+     * Get all the movies from URI 
+     *
+     * This method is used to geet all the movies with method GET
+     *
+     * @param 
+     * @return object with structure to show if the transaction was successful or not
+     */
     public function getCollection() {
         try {
             $data = $this->movieService->getCollection();
@@ -59,38 +92,4 @@ class MovieController extends Rest {
         }
     }
 
-    public function post() {
-        $data = $this->getInputDataStream();
-        try {
-            $this->movieService->post($data->movie);
-            $this->response($data, self::OK);
-        } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
-        }
-    }
-
-    public function put() {
-        $data = $this->getInputDataStream();
-        try {
-            $this->movieService->put($data->movie);
-            $this->response($data, self::OK);
-        } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
-        }
-    }
-
-    public function delete() {
-        try {
-            $id = $this->getUriSegment();
-            $data = $this->movieService->delete($id);
-            if(count($data)){
-                $this->response($data, self::OK);
-            }
-            $this->response('', self::NO_CONTENT);
-        } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
-        }
-    }
-
-    
 }

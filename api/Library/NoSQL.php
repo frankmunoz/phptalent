@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * Manages all events of transactions with the Json File
+ *
+ * This class is used to retrieve and send the data with Json File 
+ * where the data is stored according with the entity
+ *
+ * @version 1.0
+ * @author Francisco Muñoz
+ */
 class NoSQL {
     public $table = NULL;
     public $entity = '';
@@ -11,6 +19,14 @@ class NoSQL {
         $this->file = $this->dbFolder . '/' . $this->entity . '.json';
     }
 
+    /**
+     * Truncate and populate data into Json DB File
+     *
+     * This method is used to truncate and populate data into Json File
+     *
+     * @param object $data
+     * @return object with structure to show if the transaction was successful or not
+     */
     public function truncateAndPopulate($data){
         try {
             $this->table = fopen($this->file, 'wa+');
@@ -26,6 +42,14 @@ class NoSQL {
         }
     }
 
+    /**
+     * Insert data into Json DB File
+     *
+     * This method is used to insert data into Json File
+     *
+     * @param object $data
+     * @return object with structure to show if the transaction was successful or not
+     */
     public function insert($data){
         try {
             $json = $this->getJSONFromTable();
@@ -46,6 +70,14 @@ class NoSQL {
         }
     }
 
+    /**
+     * Get Json data according with the file of the entity
+     *
+     * This method is used to retrieve data from Json File according with the file of the entity
+     *
+     * @param object 
+     * @return object with structure to show if the transaction was successful or not
+     */
     public function getJSONFromTable(){
         try {
             return $this->getJSONFromURI($this->file);
@@ -54,6 +86,14 @@ class NoSQL {
         }
     }
 
+    /**
+     * Get the Json data from URI
+     *
+     * This method is used to get the data from URI
+     *
+     * @param object $data
+     * @return object with structure to show if the transaction was successful or not
+     */
     public function getJSONFromURI($endPoint){
         try {
             $json = file_get_contents($endPoint);
@@ -63,6 +103,14 @@ class NoSQL {
         }
     }
 
+    /**
+     * Json decode
+     *
+     * This method is used to decode  Json data
+     *
+     * @param object $data
+     * @return object with structure to show if the transaction was successful or not
+     */
     public function json($data) {
         return json_decode($data);
     }
