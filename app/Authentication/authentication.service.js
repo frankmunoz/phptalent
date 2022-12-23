@@ -21,7 +21,6 @@
         var urlService = 'api/';
 
         var service = {
-            get: __get,
             post: __post,
             login: __login,
             logout: __logout
